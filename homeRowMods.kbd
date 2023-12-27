@@ -1,0 +1,77 @@
+;; line 353 Optional: modded buttons
+#| -------------------------------------------------------------
+        (deflayer emptyLayer
+        _    _    _    _    _    _    _    _    _    _    _    _    _    _
+        _    _    _    _    _    _    _    _    _    _    _    _    _    _
+        _    _    _    _    _    _    _    _    _    _    _    _    _
+        _    _    _    _    _    _    _    _    _    _    _    _
+      )
+--------------------------------------------------------------- |#
+
+(defcfg
+  ;; For Windows
+  input  (low-level-hook)
+  output (send-event-sink)
+
+  ;; This option tells KMonad to let non-configured keys act normal
+  fallthrough true
+
+   ;; set this up later 
+   ;;(send-event-sink 500 300 )
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+)
+
+#| -------------------------------------------------------------
+    (defalias
+        num  (layer-toggle numbers) ;; Bind num to a button that switches to a layer
+        kil  C-A-del                ;; Bind kil to a button that Ctrl-Alt-deletes
+    )
+--------------------------------------------------------------- |#
+
+( defalias
+  a (tap-hold-next-release 300 a lmet)
+  s (tap-hold-next-release 300 s lalt)
+  d (tap-hold-next-release 300 d lsft)
+  f (tap-hold-next-release 300 f lctl)
+
+  j (tap-hold-next-release 300 j rctl)
+  k (tap-hold-next-release 300 k rsft)
+  l (tap-hold-next-release 300 l lalt)
+  ; (tap-hold-next-release 300 ; rmet)
+
+  q (tap-hold-next-release 200 q esc)
+  e (tap-hold-next-release 200 e ret)
+
+  u (tap-hold-next-release 200 u home)
+  i (tap-hold-next-release 200 i end)
+  t (tap-hold-next-release 200 t tab)
+
+  m (tap-hold-next-release 200 m pgdn)
+  , (tap-hold-next-release 200 , pgup)
+
+  lsft (layer-toggle navLayer)
+)
+
+( deflayer qwerty
+  grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab   @q   w    @e   r    @t   y    @u   @i   o    p    [    ]    \
+  caps  @a   @s   @d   @f   g    h    @j   @k   @l   @;   '    ret
+  @lsft z    x    c    v    b    n    @m   @,    .    /    rsft
+)
+
+( deflayer navLayer
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    lft  down up   rght  _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+)
+
+;; (deflayer homerowmods
+;;    @a   @s   @d   @f   g   h   @j   @k   @l   @;   
+;; )

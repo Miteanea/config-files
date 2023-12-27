@@ -6,4 +6,5 @@ VisualStudio Intellicode
 Trailing Whitespace Visualizer
 File Icons
 Roslynator:
+VsVim
 
