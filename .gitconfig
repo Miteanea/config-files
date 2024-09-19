@@ -1,9 +1,11 @@
 [user]
-	name = caragheaur
-	email = dmitri.caragheaur@gmail.com
+	name = Dmitri Caragheaur
+	email = dmitri.caragheaur@euris.it
+[http]
+	sslVerify = true
 [core]
 	autocrlf = true
-	editor = nvim
+	editor = vim
 [alias]
 	### BASIC SHORTCUTS ###
 
@@ -11,7 +13,7 @@
 	ci = commit
 	pl = pull
 	ps = push
-	co = checkout
+	s = switch
 	br = branch
 	cp = cherry-pick
 	r = reset
@@ -27,25 +29,23 @@
 	pl = pull --prune
 	
 	# Create and checkout a new branch
-	cob = checkout -b
+	sc = switch -c
 	
-	# Checkout to previous branch
-	cop = checkout -
+	# Switch to previous branch
+	sp = switch -
 	
 	# Add changes from all tracked and untracked files
 	ad = add -A
 
 	# Commit with a message
 	cm = commit -m
-	
 	# Amend the previous commit
 	amend = commit --amend
 	ca = commit --amend
-	
 	# Amend the previous commit and leave the previous message unaltered
 	can = commit --amend --no-edit
 	
-	# Push commits from the local git repository to the origin or upstream remotesh9g6C14oy$sh
+	# Push commits from the local git repository to the origin or upstream remotes
 	done = !git push origin HEAD
 	
 	# Push commits from the local git repository to the origin or upstream remotes and rewrite history
@@ -59,7 +59,6 @@
 	
 	# Clean working directory
 	cc = clean -dfx
-	
 	
 	### DIFFERENCES BETWEEN FILES ###
 	
@@ -157,26 +156,7 @@
 	# Show all the commits related to a file, with the diff of the changes
 	filelog = log -u
 	fl = log -u
-[diff]
-	tool = vsdiffmerge
-[difftool]
-	prompt = true
-[difftool "vsdiffmerge"]
-	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
-	keepBackup = false
-[merge]
-	tool = vsdiffmerge
-[mergetool]
-	prompt = true
-[mergetool "vsdiffmerge"]
-	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
-	keepBackup = false
-	trustExitCode = true
-[http]
-	sslVerify = false
 [credential "helperselector"]
 	selected = manager-core
-[color]
-	ui = always
-[credential "https://git.yoox.net"]
-	provider = bitbucket
+[credential "https://tfshub.crifnet.com:8443"]
+	provider = generic
