@@ -1,0 +1,5 @@
+1. create  %appdata%/Local/nvim folder
+2. create init.vim file in that directory
+
+Plugins
+4. execute powershell script from github.com/junegunn/vim-plug in Neovim section
