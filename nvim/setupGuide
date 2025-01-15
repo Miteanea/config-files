@@ -1,4 +1,6 @@
 1. create  %appdata%/Local/nvim folder
+mkdir %appdata%/Local/nvim
+
 2. create init.vim file in that directory
 
 Plugins
