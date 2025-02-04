@@ -158,5 +158,3 @@
 	fl = log -u
 [credential "helperselector"]
 	selected = manager-core
-[credential "https://tfshub.crifnet.com:8443"]
-	provider = generic

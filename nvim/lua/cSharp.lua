@@ -1,19 +1,5 @@
-set nocompatible
-" enable syntax and plugins
-syntax enable
-filetype plugin on
-
-set number
-set relativenumber
-
-set incsearch
-set ignorecase
-
-set shell=powershell
-
-" mappings
-let g:mapleader = ","
-
+print("cSharp config!!!")
+--[[
 " plugins
 call plug#begin()
 
@@ -26,7 +12,7 @@ call plug#begin()
 	Plug 'OmniSharp/omnisharp-vim'
 
 	Plug 'dense-analysis/ale'
-	Plug 'puremourning/vimspector'
+	" Plug 'puremourning/vimspector'
 
 call plug#end()
 
@@ -36,9 +22,4 @@ let g:OmniSharp_server_stdio = 1
 " Tell ALE to use OmniSharp for linting C# files, and no other linters.
 let g:ale_linters = { 'cs': ['OmniSharp'] }
 
-" search down into subfolders
-" Provides tab-completion for all file-related tasks
-set path+=**
-
-" Display all matching files when we tab complete
-set wildmenu
+]]--
