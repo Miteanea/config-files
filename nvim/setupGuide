@@ -4,4 +4,6 @@ mkdir %appdata%/Local/nvim OR C:\Users\<userName>\AppData\Local\nvim
 2. create init.vim file in that directory
 
 Plugins
-4. execute powershell script from github.com/junegunn/vim-plug in Neovim section
+3. execute powershell script from github.com/junegunn/vim-plug in Neovim section
+
+4. Install C++ dependencies for LSPs
