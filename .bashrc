@@ -1,2 +1,4 @@
 set -o nvim
 export VISUAL='nvim'
+
+
