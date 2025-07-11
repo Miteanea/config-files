@@ -1,6 +1,7 @@
 print("Lazy config")
+
 -- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "\\lazy\\lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 print("lazypath =")
 print(lazypath)
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -26,7 +27,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000, config = function() vim.cmd [[colorscheme moonfly]] end },
-		{ import = "custom.plugins" },
+		{ import = "custom.plugins" }, -- import lua files from /custom/plugins
 	},
 
 })

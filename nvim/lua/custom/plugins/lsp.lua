@@ -17,6 +17,26 @@ return {
 	    require("lspconfig").jsonls.setup{}
 	    require("lspconfig").angularls.setup{}
 	    require("lspconfig").sqlls.setup{}
+	    require("lspconfig").bashls.setup{}
+
+	    require('lspconfig').yamlls.setup {
+	      settings = {
+		yaml = {
+		  schemas = {
+		    -- Example: link to community-inferred schema or your own file
+		    ["https://raw.githubusercontent.com/alexharv074/cloud-init-schema/main/cloud-init-schema.json"] = {
+		      "cloud-config.yaml",
+		      "cloud-init.yaml",
+		      "*.cloud-init.yaml",
+		      "user-data",
+		    },
+		  },
+		  validate = true,
+		  completion = true,
+		  hover = true,
+		},
+	      },
+	    }
 
 	end,
     }
