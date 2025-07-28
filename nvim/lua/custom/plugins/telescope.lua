@@ -7,7 +7,12 @@ return {
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
         },
         config = function()
-            print("")
+            vim.keymap.set("n", "<leader>fd", require('telescope.builtin').find_files)
+            vim.keymap.set("n", "<leader>en", function()
+                require('telescope.builtin').find_files{
+                    cwd = vim.fn.stdpath("config")
+                }
+            end)
         end
     }
 }

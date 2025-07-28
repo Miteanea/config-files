@@ -17,8 +17,8 @@ return {
 	    require("lspconfig").jsonls.setup{}
 	    require("lspconfig").angularls.setup{}
 	    require("lspconfig").sqlls.setup{}
+	    require("lspconfig").csharp_ls.setup{}
 	    require("lspconfig").bashls.setup{}
-
 	    require('lspconfig').yamlls.setup {
 	      settings = {
 		yaml = {
@@ -37,7 +37,6 @@ return {
 		},
 	      },
 	    }
-
 	end,
     }
 }
