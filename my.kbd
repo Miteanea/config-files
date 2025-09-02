@@ -1,0 +1,76 @@
+;; sudo /Users/crd/usr/local/bin/kmonad /Users/crd/workspace/github.com/qmk/qmk_firmware/users/crd/config.kbd
+(defcfg
+  ;; For Linux
+  ;; input  (device-file "/dev/input/by-id/usb-04d9_daskeyboard-event-kbd")
+  ;; output (uinput-sink "My KMonad output"
+
+  ;; For Windows
+  input  (low-level-hook)
+  output (send-event-sink)
+
+  ;; For MacOS
+  ;; input  (iokit-name)
+  ;; output (kext)
+
+  ;; This option tells KMonad to let non-configured keys act normal
+  fallthrough true
+)
+
+(defsrc
+    q    w    e    r    t    y    u    i    o    p
+    a    s    d    f    g    h    j    k    l    ;
+    z    x    c    v    b    n    m    ,    .    /
+    spc
+)
+
+(defalias ;; homerowmods
+    met_a (tap-hold-next-release 200 a lmet)
+    alt_s (tap-hold-next-release 200 s lalt)
+    ctl_d (tap-hold-next-release 200 d lctl)
+    sft_f (tap-hold-next-release 200 f lsft)
+
+    sft_j (tap-hold-next-release 200 j rsft)
+    ctl_k (tap-hold-next-release 200 k rctl)
+    alt_l (tap-hold-next-release 200 l lalt)
+    met_; (tap-hold-next-release 200 ; rmet)
+)
+
+(defalias ;; layers
+    ext  (layer-toggle extend)
+    sym  (layer-toggle symbol)
+    sp_ex (tap-hold-next-release 200 spc @ext)
+    q_sym (tap-hold-next-release 200 q @sym)
+    p_sym (tap-hold-next-release 200 p @sym)
+)
+
+(defalias ;; multi-key combos
+    ij_bk M-[
+    ij_fw M-]
+    dc_nx S-A-down
+    dc_pr S-A-up
+    cut M-x
+    copy M-c
+    pst M-v
+)
+
+(deflayer default
+    @q_sym _      _      _      _      _      _      _      _      @p_sym
+    @met_a @alt_s @ctl_d @sft_f _      _      @sft_j @ctl_k @alt_l @met_;
+    _      _      _      _      _      _      _      _      _      _
+    @sp_ex
+
+)
+
+(deflayer extend
+    tab    7      8      9      ;      '      XX     XX     XX     ret
+    esc    4      5      6      -      =      lft    down   up     rght
+    0      1      2      3      grv    \\     @ij_bk @dc_nx @dc_pr @ij_fw
+    _
+)
+
+(deflayer symbol
+    _      vold   mute   volu   :      "      prev   pp     next   _
+    <      {      [      \(     \_     +      \)     ]      }      >
+    lsft   @cut   @copy  @pst   ~      |      home   pgdn   pgup   end
+    bspc
+)
