@@ -1,5 +1,10 @@
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+require "nvchad.mappings"
 
-map('n', '<C-u>', '<C-u>zz', opts)
-map('n', '<C-d>', '<C-d>zz', opts)
+-- add yours here
+
+local map = vim.keymap.set
+
+map("n", ";", ":", { desc = "CMD enter command mode" })
+map("i", "jk", "<ESC>")
+
+-- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
