@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    -- event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
@@ -27,13 +27,12 @@ return {
         "html",
         "css",
         "c_sharp",
-        "razor"
+        "razor",
       },
     },
   },
 
-
-    {
+  {
     "williamboman/mason.nvim",
     opts = {
       registries = {
@@ -42,6 +41,7 @@ return {
       },
       ensure_installed = {
         "lua-language-server",
+        "angular-language-server",
         "xmlformatter",
         "csharpier",
         "prettier",
@@ -99,21 +99,63 @@ return {
     requires = {
       {
         "Issafalcon/neotest-dotnet",
-      }
+      },
     },
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter"
-    }
+      "nvim-treesitter/nvim-treesitter",
+    },
+    keys = {
+      { "<leader>tr", "<cmd>Neotest run<cr>" },
+      { "<leader>ti", "<cmd>Neotest output<cr>" },
+      { "<leader>ts", "<cmd>Neotest summary<cr>" },
+      { "<leader>ta", "<cmd>lua require('neotest').run.run({suite = true})<cr>" },
+    },
   },
   {
-    "Issafalcon/neotest-dotnet",
-    lazy = false,
-    dependencies = {
-      "nvim-neotest/neotest"
-    }
+    "nsidorenco/neotest-vstest",
   },
-
+  {
+    "doums/rg.nvim",
+    cmd = { "Rg", "Rgf", "Rgp", "Rgfp" },
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
 }
