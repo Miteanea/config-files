@@ -1,4 +1,4 @@
-set -o nvim
+set -o vi
 export VISUAL='nvim'
 
 
