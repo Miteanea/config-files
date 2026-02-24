@@ -1,7 +1,37 @@
 #!/bin/bash
-sudo apt update
 
+sudo apt update
 sudo apt upgrade
+
+# update git
+sudo apt install git -y
+
+# clone config repo
+cd ~
+git clone https://github.com/Miteanea/config-files.git
+cp .config-files/nvim ~/.config/
+
+# install oh-my-bash
+$ bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
+
+# update dotfiles
+fileDir="/home/dmitric/config-files"
+# copy bin files
+cp $fileDir/.bash_aliases ~
+cp -r $fileDir/bin ~
+
+
+# configure wsl to use only wsl path
+echo '' | sudo tee -a /etc/wsl.conf
+echo '[interop]' | sudo tee -a /etc/wsl.conf
+echo 'appendWindowsPath = false' | sudo tee -a /etc/wsl.conf
+
+# exit shell (to apply wsl.conf config)
+# separate into different files 
+exit
+######
+######
+######
 
 # install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -15,17 +45,6 @@ sudo apt-get install build-essential
 # install zig (for neovim)
 brew install zig
 
-# configure wsl to use only wsl path
-echo '' | sudo tee -a /etc/wsl.conf
-echo '[interop]' | sudo tee -a /etc/wsl.conf
-echo 'appendWindowsPath = false' | sudo tee -a /etc/wsl.conf
-
-# exit shell (to apply wsl.conf config)
-# separate into different files 
-exit
-######
-######
-######
 
 
 # install node & npm
@@ -53,11 +72,3 @@ sudo apt-get update && sudo apt-get install -y aspnetcore-runtime-8.0
 # istall electron
 
 
-# update dotfiles
-
-fileDir="/mnt/c/Users/dmitric/backup-wsl"
-
-# copy bin files
-cp $fileDir/.bash_aliases ~
-cp -r $fileDir/bin ~
-cp -r $fileDir/.config/* ~/.config/
