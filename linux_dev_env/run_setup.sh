@@ -1,25 +1,19 @@
 #!/bin/bash
-
 sudo apt update
 sudo apt upgrade
 
 # update git
 sudo apt install git -y
 
+# nvim dependencies to build from source
+sudo apt-get install ninja-build gettext cmake curl build-essential git
+
 # clone config repo
-cd ~
+mkdir ~/projects/misc -p
+cd ~/projects/misc
 git clone https://github.com/Miteanea/config-files.git
-cp .config-files/nvim ~/.config/
 
-# install oh-my-bash
-$ bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
-
-# update dotfiles
-fileDir="/home/dmitric/config-files"
-# copy bin files
-cp $fileDir/.bash_aliases ~
-cp -r $fileDir/bin ~
-
+cp ~/projects/config-files/nvim ~/.config/
 
 # configure wsl to use only wsl path
 echo '' | sudo tee -a /etc/wsl.conf
@@ -40,23 +34,23 @@ echo >> /home/dmitric/.bashrc
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >> /home/dmitric/.bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 
-sudo apt-get install build-essential
+# install neovim and dependencies
+cd ~/projects/misc 
+git clone https://github.com/neovim/neovim.git
+cd ~/projects/misc/neovim
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
 
 # install zig (for neovim)
 brew install zig
 
-
-
 # install node & npm
-brew install node@24
-node -v # Should print "v24.13.0".
-npm -v # Should print "11.6.2".
-
-# install neovim
-brew install neovim
+brew install node
+node -v
+npm -v
 
 # install tmux
-apt install tmux
+sudo apt install tmux
 
 # install dotnet
 sudo apt-get update && sudo apt-get install -y dotnet-sdk-10.0
@@ -69,6 +63,16 @@ sudo apt-get update && sudo apt-get install -y aspnetcore-runtime-9.0
 sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
 sudo apt-get update && sudo apt-get install -y aspnetcore-runtime-8.0
 
-# istall electron
+# install oh-my-bash
+bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
 
+# update dotfiles
+fileDir="/home/dmitric/projects/misc/config-files/linux_dev_env"
+# copy bin files
+mkdir ~/bin/scripts -p
+cp $fileDir/scripts/* ~/bin/scripts
+# source these files
 
+mkdir ~/.config -p
+cp $fileDir/.config ~
+# innov@ctors => .npmrc / .ssh
